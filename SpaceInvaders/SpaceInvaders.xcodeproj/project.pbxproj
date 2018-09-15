@@ -16,6 +16,20 @@
 		D100354C214D4252005EB9CA /* ShipHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = D1003548214D4252005EB9CA /* ShipHit.wav */; };
 		D100354D214D4252005EB9CA /* ShipBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = D1003549214D4252005EB9CA /* ShipBullet.wav */; };
 		D100354E214D4252005EB9CA /* InvaderBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = D100354A214D4252005EB9CA /* InvaderBullet.wav */; };
+		D100355E214D42D1005EB9CA /* InvaderA_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003550214D42D0005EB9CA /* InvaderA_00@2x.png */; };
+		D100355F214D42D1005EB9CA /* InvaderA_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003551214D42D0005EB9CA /* InvaderA_01@2x.png */; };
+		D1003560214D42D1005EB9CA /* InvaderB_00.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003552214D42D0005EB9CA /* InvaderB_00.png */; };
+		D1003561214D42D1005EB9CA /* InvaderB_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003553214D42D0005EB9CA /* InvaderB_00@2x.png */; };
+		D1003562214D42D1005EB9CA /* InvaderC_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003554214D42D0005EB9CA /* InvaderC_00@2x.png */; };
+		D1003563214D42D1005EB9CA /* Ship@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003555214D42D0005EB9CA /* Ship@2x.png */; };
+		D1003564214D42D1005EB9CA /* Ship.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003556214D42D0005EB9CA /* Ship.png */; };
+		D1003565214D42D1005EB9CA /* InvaderC_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003557214D42D1005EB9CA /* InvaderC_01@2x.png */; };
+		D1003566214D42D1005EB9CA /* InvaderB_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003558214D42D1005EB9CA /* InvaderB_01@2x.png */; };
+		D1003567214D42D1005EB9CA /* InvaderA_00.png in Resources */ = {isa = PBXBuildFile; fileRef = D1003559214D42D1005EB9CA /* InvaderA_00.png */; };
+		D1003568214D42D1005EB9CA /* InvaderA_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D100355A214D42D1005EB9CA /* InvaderA_01.png */; };
+		D1003569214D42D1005EB9CA /* InvaderB_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D100355B214D42D1005EB9CA /* InvaderB_01.png */; };
+		D100356A214D42D1005EB9CA /* InvaderC_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D100355C214D42D1005EB9CA /* InvaderC_01.png */; };
+		D100356B214D42D1005EB9CA /* InvaderC_00.png in Resources */ = {isa = PBXBuildFile; fileRef = D100355D214D42D1005EB9CA /* InvaderC_00.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +44,20 @@
 		D1003548214D4252005EB9CA /* ShipHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ShipHit.wav; sourceTree = "<group>"; };
 		D1003549214D4252005EB9CA /* ShipBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ShipBullet.wav; sourceTree = "<group>"; };
 		D100354A214D4252005EB9CA /* InvaderBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InvaderBullet.wav; sourceTree = "<group>"; };
+		D1003550214D42D0005EB9CA /* InvaderA_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderA_00@2x.png"; sourceTree = "<group>"; };
+		D1003551214D42D0005EB9CA /* InvaderA_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderA_01@2x.png"; sourceTree = "<group>"; };
+		D1003552214D42D0005EB9CA /* InvaderB_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderB_00.png; sourceTree = "<group>"; };
+		D1003553214D42D0005EB9CA /* InvaderB_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderB_00@2x.png"; sourceTree = "<group>"; };
+		D1003554214D42D0005EB9CA /* InvaderC_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderC_00@2x.png"; sourceTree = "<group>"; };
+		D1003555214D42D0005EB9CA /* Ship@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ship@2x.png"; sourceTree = "<group>"; };
+		D1003556214D42D0005EB9CA /* Ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ship.png; sourceTree = "<group>"; };
+		D1003557214D42D1005EB9CA /* InvaderC_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderC_01@2x.png"; sourceTree = "<group>"; };
+		D1003558214D42D1005EB9CA /* InvaderB_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderB_01@2x.png"; sourceTree = "<group>"; };
+		D1003559214D42D1005EB9CA /* InvaderA_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderA_00.png; sourceTree = "<group>"; };
+		D100355A214D42D1005EB9CA /* InvaderA_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderA_01.png; sourceTree = "<group>"; };
+		D100355B214D42D1005EB9CA /* InvaderB_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderB_01.png; sourceTree = "<group>"; };
+		D100355C214D42D1005EB9CA /* InvaderC_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderC_01.png; sourceTree = "<group>"; };
+		D100355D214D42D1005EB9CA /* InvaderC_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderC_00.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				D1003546214D4213005EB9CA /* SoundEffects */,
+				D100354F214D4289005EB9CA /* SpriteImages */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -114,6 +143,27 @@
 				D1003548214D4252005EB9CA /* ShipHit.wav */,
 			);
 			path = SoundEffects;
+			sourceTree = "<group>";
+		};
+		D100354F214D4289005EB9CA /* SpriteImages */ = {
+			isa = PBXGroup;
+			children = (
+				D1003559214D42D1005EB9CA /* InvaderA_00.png */,
+				D1003550214D42D0005EB9CA /* InvaderA_00@2x.png */,
+				D100355A214D42D1005EB9CA /* InvaderA_01.png */,
+				D1003551214D42D0005EB9CA /* InvaderA_01@2x.png */,
+				D1003552214D42D0005EB9CA /* InvaderB_00.png */,
+				D1003553214D42D0005EB9CA /* InvaderB_00@2x.png */,
+				D100355B214D42D1005EB9CA /* InvaderB_01.png */,
+				D1003558214D42D1005EB9CA /* InvaderB_01@2x.png */,
+				D100355D214D42D1005EB9CA /* InvaderC_00.png */,
+				D1003554214D42D0005EB9CA /* InvaderC_00@2x.png */,
+				D100355C214D42D1005EB9CA /* InvaderC_01.png */,
+				D1003557214D42D1005EB9CA /* InvaderC_01@2x.png */,
+				D1003556214D42D0005EB9CA /* Ship.png */,
+				D1003555214D42D0005EB9CA /* Ship@2x.png */,
+			);
+			path = SpriteImages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,10 +224,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D100355E214D42D1005EB9CA /* InvaderA_00@2x.png in Resources */,
+				D1003563214D42D1005EB9CA /* Ship@2x.png in Resources */,
 				D100354B214D4252005EB9CA /* InvaderHit.wav in Resources */,
+				D1003564214D42D1005EB9CA /* Ship.png in Resources */,
+				D1003562214D42D1005EB9CA /* InvaderC_00@2x.png in Resources */,
+				D1003569214D42D1005EB9CA /* InvaderB_01.png in Resources */,
+				D1003561214D42D1005EB9CA /* InvaderB_00@2x.png in Resources */,
+				D100356B214D42D1005EB9CA /* InvaderC_00.png in Resources */,
+				D1003560214D42D1005EB9CA /* InvaderB_00.png in Resources */,
+				D1003565214D42D1005EB9CA /* InvaderC_01@2x.png in Resources */,
+				D100355F214D42D1005EB9CA /* InvaderA_01@2x.png in Resources */,
+				D1003567214D42D1005EB9CA /* InvaderA_00.png in Resources */,
 				D100353B214D3FE2005EB9CA /* LaunchScreen.storyboard in Resources */,
+				D1003566214D42D1005EB9CA /* InvaderB_01@2x.png in Resources */,
 				D100354D214D4252005EB9CA /* ShipBullet.wav in Resources */,
+				D100356A214D42D1005EB9CA /* InvaderC_01.png in Resources */,
 				D100354C214D4252005EB9CA /* ShipHit.wav in Resources */,
+				D1003568214D42D1005EB9CA /* InvaderA_01.png in Resources */,
 				D1003538214D3FE2005EB9CA /* Assets.xcassets in Resources */,
 				D1003536214D3FE1005EB9CA /* Main.storyboard in Resources */,
 				D100354E214D4252005EB9CA /* InvaderBullet.wav in Resources */,
