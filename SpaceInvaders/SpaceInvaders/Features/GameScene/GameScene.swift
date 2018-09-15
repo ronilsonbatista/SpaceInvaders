@@ -232,6 +232,47 @@ class GameScene: SKScene {
     
     // Scene Update
     
+    func fireInvaderBullets(forUpdate currentTime: CFTimeInterval) {
+        let existingBullet = childNode(withName: kInvaderFiredBulletName)
+        
+        // 1
+        if existingBullet == nil {
+            var allInvaders = [SKNode]()
+            
+            // 2
+            enumerateChildNodes(withName: InvaderType.name) { node, stop in
+                allInvaders.append(node)
+            }
+            
+            if allInvaders.count > 0 {
+                // 3
+                let allInvadersIndex = Int(arc4random_uniform(UInt32(allInvaders.count)))
+                
+                let invader = allInvaders[allInvadersIndex]
+                
+                // 4
+                let bullet = makeBullet(ofType: .invaderFired)
+                bullet.position = CGPoint(
+                    x: invader.position.x,
+                    y: invader.position.y - invader.frame.size.height / 2 + bullet.frame.size.height / 2
+                )
+                
+                // 5
+                let bulletDestination = CGPoint(x: invader.position.x, y: -(bullet.frame.size.height / 2))
+                
+                // 6
+                fireBullet(
+                    bullet: bullet,
+                    toDestination: bulletDestination,
+                    withDuration: 2.0,
+                    andSoundFileName: "InvaderBullet.wav"
+                )
+            }
+        }
+    }
+
+    
+    
     func moveInvaders(forUpdate currentTime: CFTimeInterval) {
         // 1
         if (currentTime - timeOfLastMove < timePerMove) {
@@ -277,6 +318,8 @@ class GameScene: SKScene {
         processUserMotion(forUpdate: currentTime)
         moveInvaders(forUpdate: currentTime)
         processUserTaps(forUpdate: currentTime)
+        fireInvaderBullets(forUpdate: currentTime)
+
 
     }
     
