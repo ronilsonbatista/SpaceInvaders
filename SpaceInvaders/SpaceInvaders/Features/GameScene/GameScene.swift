@@ -85,6 +85,14 @@ class GameScene: SKScene {
     let kScoreHudName = "scoreHud"
     let kHealthHudName = "healthHud"
     
+    
+    
+    
+    /// score
+    
+    var score: Int = 0
+    var shipHealth: Float = 1.0
+    
     // Object Lifecycle Management
     
     // Scene Setup and Content Creation
@@ -279,8 +287,16 @@ class GameScene: SKScene {
             x: frame.size.width / 2,
             y: size.height - (80 + healthLabel.frame.size.height/2)
         )
+        
+        healthLabel.text = String(format: "Health: %.1f%%", 100.0)
+        healthLabel.text = String(format: "Health: %.1f%%", shipHealth * 100.0)
+
+
         addChild(healthLabel)
     }
+    
+    
+    
     
     // Scene Update
     
@@ -514,35 +530,35 @@ extension GameScene: SKPhysicsContactDelegate{
     }
 
     
-    func handle(_ contact: SKPhysicsContact) {
-        //1
-        // Ensure you haven't already handled this contact and removed its nodes
-        if contact.bodyA.node?.parent == nil || contact.bodyB.node?.parent == nil {
-            return
-        }
-        
-        let nodeNames = [contact.bodyA.node!.name!, contact.bodyB.node!.name!]
-        
-        // 2
-        if nodeNames.contains(kShipName) && nodeNames.contains(kInvaderFiredBulletName) {
-            
-            // 3
-            // Invader bullet hit a ship
-            run(SKAction.playSoundFileNamed("ShipHit.wav", waitForCompletion: false))
-            
-            contact.bodyA.node!.removeFromParent()
-            contact.bodyB.node!.removeFromParent()
-            
-            
-        } else if nodeNames.contains(InvaderType.name) && nodeNames.contains(kShipFiredBulletName) {
-            
-            // 4
-            // Ship bullet hit an invader
-            run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: false))
-            contact.bodyA.node!.removeFromParent()
-            contact.bodyB.node!.removeFromParent()
-        }
-    }
+//    func handle(_ contact: SKPhysicsContact) {
+//        //1
+//        // Ensure you haven't already handled this contact and removed its nodes
+//        if contact.bodyA.node?.parent == nil || contact.bodyB.node?.parent == nil {
+//            return
+//        }
+//
+//        let nodeNames = [contact.bodyA.node!.name!, contact.bodyB.node!.name!]
+//
+//        // 2
+//        if nodeNames.contains(kShipName) && nodeNames.contains(kInvaderFiredBulletName) {
+//
+//            // 3
+//            // Invader bullet hit a ship
+//            run(SKAction.playSoundFileNamed("ShipHit.wav", waitForCompletion: false))
+//
+//            contact.bodyA.node!.removeFromParent()
+//            contact.bodyB.node!.removeFromParent()
+//
+//
+//        } else if nodeNames.contains(InvaderType.name) && nodeNames.contains(kShipFiredBulletName) {
+//
+//            // 4
+//            // Ship bullet hit an invader
+//            run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: false))
+//            contact.bodyA.node!.removeFromParent()
+//            contact.bodyB.node!.removeFromParent()
+//        }
+//    }
 
     func processContacts(forUpdate currentTime: CFTimeInterval) {
         for contact in contactQueue {
@@ -554,6 +570,27 @@ extension GameScene: SKPhysicsContactDelegate{
         }
     }
 
+}
+// Score
+extension GameScene {
     
+    func adjustScore(by points: Int) {
+        score += points
+        
+        if let score = childNode(withName: kScoreHudName) as? SKLabelNode {
+            score.text = String(format: "Score: %04u", self.score)
+        }
+    }
     
+    func adjustShipHealth(by healthAdjustment: Float) {
+        // 1
+        shipHealth = max(shipHealth + healthAdjustment, 0)
+        
+        if let health = childNode(withName: kHealthHudName) as? SKLabelNode {
+            health.text = String(format: "Health: %.1f%%", self.shipHealth * 100)
+        }
+    }
+    
+
+
 }
