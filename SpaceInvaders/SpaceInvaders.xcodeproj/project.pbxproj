@@ -30,7 +30,6 @@
 		D100356A214D42D1005EB9CA /* InvaderC_01.png in Resources */ = {isa = PBXBuildFile; fileRef = D100355C214D42D1005EB9CA /* InvaderC_01.png */; };
 		D100356B214D42D1005EB9CA /* InvaderC_00.png in Resources */ = {isa = PBXBuildFile; fileRef = D100355D214D42D1005EB9CA /* InvaderC_00.png */; };
 		D100356E214D4440005EB9CA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100356C214D4440005EB9CA /* GameViewController.swift */; };
-		D100356F214D4440005EB9CA /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D100356D214D4440005EB9CA /* GameViewController.xib */; };
 		D1003578214D498F005EB9CA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1003577214D498F005EB9CA /* GameScene.swift */; };
 		D100357D214D4D8C005EB9CA /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100357C214D4D8B005EB9CA /* GameOverScene.swift */; };
 /* End PBXBuildFile section */
@@ -61,7 +60,6 @@
 		D100355C214D42D1005EB9CA /* InvaderC_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderC_01.png; sourceTree = "<group>"; };
 		D100355D214D42D1005EB9CA /* InvaderC_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderC_00.png; sourceTree = "<group>"; };
 		D100356C214D4440005EB9CA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		D100356D214D4440005EB9CA /* GameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		D1003577214D498F005EB9CA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		D100357C214D4D8B005EB9CA /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				D100356C214D4440005EB9CA /* GameViewController.swift */,
-				D100356D214D4440005EB9CA /* GameViewController.xib */,
 			);
 			path = GamePlay;
 			sourceTree = "<group>";
@@ -273,7 +270,6 @@
 				D1003566214D42D1005EB9CA /* InvaderB_01@2x.png in Resources */,
 				D100354D214D4252005EB9CA /* ShipBullet.wav in Resources */,
 				D100356A214D42D1005EB9CA /* InvaderC_01.png in Resources */,
-				D100356F214D4440005EB9CA /* GameViewController.xib in Resources */,
 				D100354C214D4252005EB9CA /* ShipHit.wav in Resources */,
 				D1003568214D42D1005EB9CA /* InvaderA_01.png in Resources */,
 				D1003538214D3FE2005EB9CA /* Assets.xcassets in Resources */,
