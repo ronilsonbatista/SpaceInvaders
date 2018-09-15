@@ -12,6 +12,10 @@
 		D1003536214D3FE1005EB9CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1003534214D3FE1005EB9CA /* Main.storyboard */; };
 		D1003538214D3FE2005EB9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1003537214D3FE2005EB9CA /* Assets.xcassets */; };
 		D100353B214D3FE2005EB9CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1003539214D3FE2005EB9CA /* LaunchScreen.storyboard */; };
+		D100354B214D4252005EB9CA /* InvaderHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = D1003547214D4252005EB9CA /* InvaderHit.wav */; };
+		D100354C214D4252005EB9CA /* ShipHit.wav in Resources */ = {isa = PBXBuildFile; fileRef = D1003548214D4252005EB9CA /* ShipHit.wav */; };
+		D100354D214D4252005EB9CA /* ShipBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = D1003549214D4252005EB9CA /* ShipBullet.wav */; };
+		D100354E214D4252005EB9CA /* InvaderBullet.wav in Resources */ = {isa = PBXBuildFile; fileRef = D100354A214D4252005EB9CA /* InvaderBullet.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		D1003537214D3FE2005EB9CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D100353A214D3FE2005EB9CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D100353C214D3FE2005EB9CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1003547214D4252005EB9CA /* InvaderHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InvaderHit.wav; sourceTree = "<group>"; };
+		D1003548214D4252005EB9CA /* ShipHit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ShipHit.wav; sourceTree = "<group>"; };
+		D1003549214D4252005EB9CA /* ShipBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ShipBullet.wav; sourceTree = "<group>"; };
+		D100354A214D4252005EB9CA /* InvaderBullet.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = InvaderBullet.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,7 @@
 		D1003543214D4124005EB9CA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D1003546214D4213005EB9CA /* SoundEffects */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -94,6 +103,17 @@
 				D1003539214D3FE2005EB9CA /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		D1003546214D4213005EB9CA /* SoundEffects */ = {
+			isa = PBXGroup;
+			children = (
+				D100354A214D4252005EB9CA /* InvaderBullet.wav */,
+				D1003547214D4252005EB9CA /* InvaderHit.wav */,
+				D1003549214D4252005EB9CA /* ShipBullet.wav */,
+				D1003548214D4252005EB9CA /* ShipHit.wav */,
+			);
+			path = SoundEffects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +174,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D100354B214D4252005EB9CA /* InvaderHit.wav in Resources */,
 				D100353B214D3FE2005EB9CA /* LaunchScreen.storyboard in Resources */,
+				D100354D214D4252005EB9CA /* ShipBullet.wav in Resources */,
+				D100354C214D4252005EB9CA /* ShipHit.wav in Resources */,
 				D1003538214D3FE2005EB9CA /* Assets.xcassets in Resources */,
 				D1003536214D3FE1005EB9CA /* Main.storyboard in Resources */,
+				D100354E214D4252005EB9CA /* InvaderBullet.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
