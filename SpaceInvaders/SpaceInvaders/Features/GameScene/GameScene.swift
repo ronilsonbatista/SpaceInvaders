@@ -25,6 +25,9 @@ class GameScene: SKScene {
     let timePerMove: CFTimeInterval = 1.0
     
     var tapQueue = [ Int ] ()
+    
+    var contactQueue = [SKPhysicsContact]()
+
 
     
     enum InvaderType {
@@ -101,7 +104,6 @@ class GameScene: SKScene {
             bullet.physicsBody!.contactTestBitMask = kInvaderCategory
             bullet.physicsBody!.collisionBitMask = 0x0
 
-
             
         case .invaderFired:
             bullet = SKSpriteNode(color: SKColor.magenta, size: kBulletSize)
@@ -114,7 +116,6 @@ class GameScene: SKScene {
             bullet.physicsBody!.contactTestBitMask = kShipCategory
             bullet.physicsBody!.collisionBitMask = 0x0
 
-            
             break
         }
         
@@ -128,6 +129,8 @@ class GameScene: SKScene {
             self.createContent()
             self.contentCreated = true
             motionManager.startAccelerometerUpdates()
+            physicsWorld.contactDelegate = self
+
         }
     }
     
@@ -368,6 +371,8 @@ class GameScene: SKScene {
         moveInvaders(forUpdate: currentTime)
         processUserTaps(forUpdate: currentTime)
         fireInvaderBullets(forUpdate: currentTime)
+        processContacts(forUpdate: currentTime)
+
     }
     
     // Scene Update Helpers
@@ -499,5 +504,56 @@ class GameScene: SKScene {
     // Physics Contact Helpers
     
     // Game End Helpers
+    
+}
+
+extension GameScene: SKPhysicsContactDelegate{
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        contactQueue.append(contact)
+    }
+
+    
+    func handle(_ contact: SKPhysicsContact) {
+        //1
+        // Ensure you haven't already handled this contact and removed its nodes
+        if contact.bodyA.node?.parent == nil || contact.bodyB.node?.parent == nil {
+            return
+        }
+        
+        let nodeNames = [contact.bodyA.node!.name!, contact.bodyB.node!.name!]
+        
+        // 2
+        if nodeNames.contains(kShipName) && nodeNames.contains(kInvaderFiredBulletName) {
+            
+            // 3
+            // Invader bullet hit a ship
+            run(SKAction.playSoundFileNamed("ShipHit.wav", waitForCompletion: false))
+            
+            contact.bodyA.node!.removeFromParent()
+            contact.bodyB.node!.removeFromParent()
+            
+            
+        } else if nodeNames.contains(InvaderType.name) && nodeNames.contains(kShipFiredBulletName) {
+            
+            // 4
+            // Ship bullet hit an invader
+            run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: false))
+            contact.bodyA.node!.removeFromParent()
+            contact.bodyB.node!.removeFromParent()
+        }
+    }
+
+    func processContacts(forUpdate currentTime: CFTimeInterval) {
+        for contact in contactQueue {
+            handle(contact)
+            
+            if let index = contactQueue.index(of: contact) {
+                contactQueue.remove(at: index)
+            }
+        }
+    }
+
+    
     
 }
