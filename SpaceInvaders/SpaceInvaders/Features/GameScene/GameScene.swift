@@ -58,6 +58,18 @@ class GameScene: SKScene {
     let kShipFiredBulletName = "shipFiredBullet"
     let kInvaderFiredBulletName = "invaderFiredBullet"
     let kBulletSize = CGSize(width:4, height: 8)
+     //Bullet
+    
+    
+    
+    // Target
+    let kInvaderCategory: UInt32 = 0x1 << 0
+    let kShipFiredBulletCategory: UInt32 = 0x1 << 1
+    let kShipCategory: UInt32 = 0x1 << 2
+    let kSceneEdgeCategory: UInt32 = 0x1 << 3
+    let kInvaderFiredBulletCategory: UInt32 = 0x1 << 4
+     // Target
+
 
     
     let kInvaderGridSpacing = CGSize(width: 12, height: 12)
@@ -81,9 +93,28 @@ class GameScene: SKScene {
         case .shipFired:
             bullet = SKSpriteNode(color: SKColor.green, size: kBulletSize)
             bullet.name = kShipFiredBulletName
+            
+            bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.frame.size)
+            bullet.physicsBody!.isDynamic = true
+            bullet.physicsBody!.affectedByGravity = false
+            bullet.physicsBody!.categoryBitMask = kShipFiredBulletCategory
+            bullet.physicsBody!.contactTestBitMask = kInvaderCategory
+            bullet.physicsBody!.collisionBitMask = 0x0
+
+
+            
         case .invaderFired:
             bullet = SKSpriteNode(color: SKColor.magenta, size: kBulletSize)
             bullet.name = kInvaderFiredBulletName
+            
+            bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.frame.size)
+            bullet.physicsBody!.isDynamic = true
+            bullet.physicsBody!.affectedByGravity = false
+            bullet.physicsBody!.categoryBitMask = kInvaderFiredBulletCategory
+            bullet.physicsBody!.contactTestBitMask = kShipCategory
+            bullet.physicsBody!.collisionBitMask = 0x0
+
+            
             break
         }
         
@@ -102,6 +133,8 @@ class GameScene: SKScene {
     
     func createContent() {
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        physicsBody!.categoryBitMask = kSceneEdgeCategory
+
         
         setupInvaders()
         setupShip()
@@ -127,6 +160,13 @@ class GameScene: SKScene {
         // 2
         let invader = SKSpriteNode(color: invaderColor, size: InvaderType.size)
         invader.name = InvaderType.name
+        
+        invader.physicsBody = SKPhysicsBody(rectangleOf: invader.frame.size)
+        invader.physicsBody!.isDynamic = false
+        invader.physicsBody!.categoryBitMask = kInvaderCategory
+        invader.physicsBody!.contactTestBitMask = 0x0
+        invader.physicsBody!.collisionBitMask = 0x0
+
         
         return invader
     }
@@ -192,6 +232,15 @@ class GameScene: SKScene {
         
         // 4
         ship.physicsBody!.mass = 0.02
+        
+        
+        // 1
+        ship.physicsBody!.categoryBitMask = kShipCategory
+        // 2
+        ship.physicsBody!.contactTestBitMask = 0x0
+        // 3
+        ship.physicsBody!.collisionBitMask = kSceneEdgeCategory
+
         
         return ship
     }
@@ -319,8 +368,6 @@ class GameScene: SKScene {
         moveInvaders(forUpdate: currentTime)
         processUserTaps(forUpdate: currentTime)
         fireInvaderBullets(forUpdate: currentTime)
-
-
     }
     
     // Scene Update Helpers
