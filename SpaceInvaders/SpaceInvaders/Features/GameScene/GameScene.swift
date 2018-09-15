@@ -11,9 +11,11 @@ import CoreMotion
 
 class GameScene: SKScene {
     
-   var contentCreated = false
+    // Private GameScene Properties
     
-    // move
+    let motionManager = CMMotionManager()
+    
+    var contentCreated = false
     
     // 1
     var invaderMovementDirection: InvaderMovementDirection = .right
@@ -21,7 +23,6 @@ class GameScene: SKScene {
     var timeOfLastMove: CFTimeInterval = 0.0
     // 3
     let timePerMove: CFTimeInterval = 1.0
-
     
     enum InvaderType {
         case a
@@ -45,37 +46,36 @@ class GameScene: SKScene {
         case none
     }
     
-    // Inimigos
     let kInvaderGridSpacing = CGSize(width: 12, height: 12)
     let kInvaderRowCount = 6
     let kInvaderColCount = 6
     
-    // Nosso jogador
     let kShipSize = CGSize(width: 30, height: 16)
     let kShipName = "ship"
     
-    //Placares
     let kScoreHudName = "scoreHud"
     let kHealthHudName = "healthHud"
-
     
+    // Object Lifecycle Management
     
+    // Scene Setup and Content Creation
     override func didMove(to view: SKView) {
         
         if (!self.contentCreated) {
-//            self.createContent()
-            self.setupInvaders()
-            self.setupShip()
-            self.setupHud()
+            self.createContent()
             self.contentCreated = true
-        
+            motionManager.startAccelerometerUpdates()
         }
     }
     
     func createContent() {
-        let invader = SKSpriteNode(imageNamed: "InvaderA_00.png")
-        invader.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        self.addChild(invader)
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
+        setupInvaders()
+        setupShip()
+        setupHud()
+        
+        // black space color
         self.backgroundColor = SKColor.black
     }
     
@@ -99,8 +99,6 @@ class GameScene: SKScene {
         return invader
     }
     
-    
-    // Inimigos
     func setupInvaders() {
         // 1
         let baseOrigin = CGPoint(x: size.width / 3, y: size.height / 2)
@@ -123,7 +121,7 @@ class GameScene: SKScene {
             var invaderPosition = CGPoint(x: baseOrigin.x, y: invaderPositionY)
             
             // 4
-            for _ in 1..<kInvaderColCount {
+            for _ in 1..<kInvaderRowCount {
                 // 5
                 let invader = makeInvader(ofType: invaderType)
                 invader.position = invaderPosition
@@ -138,7 +136,6 @@ class GameScene: SKScene {
         }
     }
     
-    // Nosso cara
     func setupShip() {
         // 1
         let ship = makeShip()
@@ -151,11 +148,21 @@ class GameScene: SKScene {
     func makeShip() -> SKNode {
         let ship = SKSpriteNode(color: SKColor.green, size: kShipSize)
         ship.name = kShipName
+        
+        // 1
+        ship.physicsBody = SKPhysicsBody(rectangleOf: ship.frame.size)
+        
+        // 2
+        ship.physicsBody!.isDynamic = true
+        
+        // 3
+        ship.physicsBody!.affectedByGravity = false
+        
+        // 4
+        ship.physicsBody!.mass = 0.02
+        
         return ship
     }
-    
-    
-    // Placares
     
     func setupHud() {
         // 1
@@ -190,22 +197,16 @@ class GameScene: SKScene {
         )
         addChild(healthLabel)
     }
-
-
     
     // Scene Update
-    override func update(_ currentTime: TimeInterval) {
-        moveInvaders(forUpdate: currentTime)
-    }
-    
-    
-    //moveInvaders
     
     func moveInvaders(forUpdate currentTime: CFTimeInterval) {
         // 1
         if (currentTime - timeOfLastMove < timePerMove) {
             return
         }
+        
+        determineInvaderMovementDirection()
         
         // 2
         enumerateChildNodes(withName: InvaderType.name) { node, stop in
@@ -222,14 +223,32 @@ class GameScene: SKScene {
             
             // 3
             self.timeOfLastMove = currentTime
-            self.determineInvaderMovementDirection()
-
         }
     }
     
+    func processUserMotion(forUpdate currentTime: CFTimeInterval) {
+        // 1
+        if let ship = childNode(withName: kShipName) as? SKSpriteNode {
+            // 2
+            if let data = motionManager.accelerometerData {
+                // 3
+                if fabs(data.acceleration.x) > 0.2 {
+                    // 4 How do you move the ship?
+                    print("Acceleration: \(data.acceleration.x)")
+                    ship.physicsBody!.applyForce(CGVector(dx: 40 * CGFloat(data.acceleration.x), dy: 0))
+                }
+            }
+        }
+    }
     
+    override func update(_ currentTime: TimeInterval) {
+        processUserMotion(forUpdate: currentTime)
+        moveInvaders(forUpdate: currentTime)
+    }
     
+    // Scene Update Helpers
     
+    // Invader Movement Helpers
     
     func determineInvaderMovementDirection() {
         // 1
@@ -275,8 +294,15 @@ class GameScene: SKScene {
             invaderMovementDirection = proposedMovementDirection
         }
     }
-
     
+    // Bullet Helpers
     
+    // User Tap Helpers
+    
+    // HUD Helpers
+    
+    // Physics Contact Helpers
+    
+    // Game End Helpers
     
 }
