@@ -155,32 +155,6 @@ class GameScene: SKScene {
         self.backgroundColor = SKColor.black
     }
     
-    func makeInvader(ofType invaderType: InvaderType) -> SKNode {
-        // 1
-        var invaderColor: SKColor
-        
-        switch(invaderType) {
-        case .a:
-            invaderColor = SKColor.red
-        case .b:
-            invaderColor = SKColor.green
-        case .c:
-            invaderColor = SKColor.blue
-        }
-        
-        // 2
-        let invader = SKSpriteNode(color: invaderColor, size: InvaderType.size)
-        invader.name = InvaderType.name
-        
-        invader.physicsBody = SKPhysicsBody(rectangleOf: invader.frame.size)
-        invader.physicsBody!.isDynamic = false
-        invader.physicsBody!.categoryBitMask = kInvaderCategory
-        invader.physicsBody!.contactTestBitMask = 0x0
-        invader.physicsBody!.collisionBitMask = 0x0
-
-        
-        return invader
-    }
     
     func setupInvaders() {
         // 1
@@ -636,4 +610,9 @@ extension GameScene {
     }
 
 
+}
+
+// makeInvader
+extension GameScene {
+    
 }
