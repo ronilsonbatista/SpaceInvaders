@@ -31,12 +31,16 @@ class GameScene: SKScene {
     let kInvaderRowCount = 6
     let kInvaderColCount = 6
     
+    let kShipSize = CGSize(width: 30, height: 16)
+    let kShipName = "ship"
+    
     
     override func didMove(to view: SKView) {
         
         if (!self.contentCreated) {
 //            self.createContent()
             self.setupInvaders()
+            self.setupShip()
             self.contentCreated = true
         }
     }
@@ -103,6 +107,21 @@ class GameScene: SKScene {
                 )
             }
         }
+    }
+    
+    func setupShip() {
+        // 1
+        let ship = makeShip()
+        
+        // 2
+        ship.position = CGPoint(x: size.width / 2.0, y: kShipSize.height / 2.0)
+        addChild(ship)
+    }
+    
+    func makeShip() -> SKNode {
+        let ship = SKSpriteNode(color: SKColor.green, size: kShipSize)
+        ship.name = kShipName
+        return ship
     }
 
     
