@@ -13,6 +13,16 @@ class GameScene: SKScene {
     
    var contentCreated = false
     
+    // move
+    
+    // 1
+    var invaderMovementDirection: InvaderMovementDirection = .right
+    // 2
+    var timeOfLastMove: CFTimeInterval = 0.0
+    // 3
+    let timePerMove: CFTimeInterval = 1.0
+
+    
     enum InvaderType {
         case a
         case b
@@ -25,6 +35,14 @@ class GameScene: SKScene {
         static var name: String {
             return "invader"
         }
+    }
+    
+    enum InvaderMovementDirection {
+        case right
+        case left
+        case downThenRight
+        case downThenLeft
+        case none
     }
     
     // Inimigos
@@ -50,6 +68,7 @@ class GameScene: SKScene {
             self.setupShip()
             self.setupHud()
             self.contentCreated = true
+        
         }
     }
     
@@ -176,5 +195,33 @@ class GameScene: SKScene {
     
     // Scene Update
     override func update(_ currentTime: TimeInterval) {
+        moveInvaders(forUpdate: currentTime)
+    }
+    
+    
+    //moveInvaders
+    
+    func moveInvaders(forUpdate currentTime: CFTimeInterval) {
+        // 1
+        if (currentTime - timeOfLastMove < timePerMove) {
+            return
+        }
+        
+        // 2
+        enumerateChildNodes(withName: InvaderType.name) { node, stop in
+            switch self.invaderMovementDirection {
+            case .right:
+                node.position = CGPoint(x: node.position.x + 10, y: node.position.y)
+            case .left:
+                node.position = CGPoint(x: node.position.x - 10, y: node.position.y)
+            case .downThenLeft, .downThenRight:
+                node.position = CGPoint(x: node.position.x, y: node.position.y - 10)
+            case .none:
+                break
+            }
+            
+            // 3
+            self.timeOfLastMove = currentTime
+        }
     }
 }
