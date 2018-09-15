@@ -203,7 +203,7 @@ class GameScene: SKScene {
     }
     
     func makeShip() -> SKNode {
-        let ship = SKSpriteNode(color: SKColor.green, size: kShipSize)
+        let ship = SKSpriteNode(imageNamed: "Ship.png")
         ship.name = kShipName
         
         // 1
