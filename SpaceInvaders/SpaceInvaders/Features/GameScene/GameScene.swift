@@ -615,4 +615,41 @@ extension GameScene {
 // makeInvader
 extension GameScene {
     
+    func loadInvaderTextures(ofType invaderType: InvaderType) -> [SKTexture] {
+        
+        var prefix: String
+        
+        switch(invaderType) {
+        case .a:
+            prefix = "InvaderA"
+        case .b:
+            prefix = "InvaderB"
+        case .c:
+            prefix = "InvaderC"
+        }
+        
+        // 1
+        return [SKTexture(imageNamed: String(format: "%@_00.png", prefix)),
+                SKTexture(imageNamed: String(format: "%@_01.png", prefix))]
+    }
+    
+    func makeInvader(ofType invaderType: InvaderType) -> SKNode {
+        let invaderTextures = loadInvaderTextures(ofType: invaderType)
+        
+        // 2
+        let invader = SKSpriteNode(texture: invaderTextures[0])
+        invader.name = InvaderType.name
+        
+        // 3
+        invader.run(SKAction.repeatForever(SKAction.animate(with: invaderTextures, timePerFrame: timePerMove)))
+        
+        // invaders' bitmasks setup
+        invader.physicsBody = SKPhysicsBody(rectangleOf: invader.frame.size)
+        invader.physicsBody!.isDynamic = false
+        invader.physicsBody!.categoryBitMask = kInvaderCategory
+        invader.physicsBody!.contactTestBitMask = 0x0
+        invader.physicsBody!.collisionBitMask = 0x0
+        
+        return invader
+    }
 }
