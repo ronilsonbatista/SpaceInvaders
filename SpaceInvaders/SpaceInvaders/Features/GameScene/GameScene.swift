@@ -27,12 +27,19 @@ class GameScene: SKScene {
         }
     }
     
+    // Inimigos
     let kInvaderGridSpacing = CGSize(width: 12, height: 12)
     let kInvaderRowCount = 6
     let kInvaderColCount = 6
     
+    // Nosso jogador
     let kShipSize = CGSize(width: 30, height: 16)
     let kShipName = "ship"
+    
+    //Placares
+    let kScoreHudName = "scoreHud"
+    let kHealthHudName = "healthHud"
+
     
     
     override func didMove(to view: SKView) {
@@ -41,6 +48,7 @@ class GameScene: SKScene {
 //            self.createContent()
             self.setupInvaders()
             self.setupShip()
+            self.setupHud()
             self.contentCreated = true
         }
     }
@@ -72,6 +80,8 @@ class GameScene: SKScene {
         return invader
     }
     
+    
+    // Inimigos
     func setupInvaders() {
         // 1
         let baseOrigin = CGPoint(x: size.width / 3, y: size.height / 2)
@@ -109,6 +119,7 @@ class GameScene: SKScene {
         }
     }
     
+    // Nosso cara
     func setupShip() {
         // 1
         let ship = makeShip()
@@ -123,6 +134,44 @@ class GameScene: SKScene {
         ship.name = kShipName
         return ship
     }
+    
+    
+    // Placares
+    
+    func setupHud() {
+        // 1
+        let scoreLabel = SKLabelNode(fontNamed: "Courier")
+        scoreLabel.name = kScoreHudName
+        scoreLabel.fontSize = 25
+        
+        // 2
+        scoreLabel.fontColor = SKColor.green
+        scoreLabel.text = String(format: "Score: %04u", 0)
+        
+        // 3
+        scoreLabel.position = CGPoint(
+            x: frame.size.width / 2,
+            y: size.height - (40 + scoreLabel.frame.size.height/2)
+        )
+        addChild(scoreLabel)
+        
+        // 4
+        let healthLabel = SKLabelNode(fontNamed: "Courier")
+        healthLabel.name = kHealthHudName
+        healthLabel.fontSize = 25
+        
+        // 5
+        healthLabel.fontColor = SKColor.red
+        healthLabel.text = String(format: "Health: %.1f%%", 100.0)
+        
+        // 6
+        healthLabel.position = CGPoint(
+            x: frame.size.width / 2,
+            y: size.height - (80 + healthLabel.frame.size.height/2)
+        )
+        addChild(healthLabel)
+    }
+
 
     
     // Scene Update
