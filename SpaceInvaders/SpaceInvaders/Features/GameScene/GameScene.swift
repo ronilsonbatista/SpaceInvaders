@@ -36,36 +36,6 @@ class GameScene: SKScene {
 
 
 
-
-
-    
-    enum InvaderType {
-        case a
-        case b
-        case c
-        
-        static var size: CGSize {
-            return CGSize(width: 24, height: 16)
-        }
-        
-        static var name: String {
-            return "invader"
-        }
-    }
-    
-    enum InvaderMovementDirection {
-        case right
-        case left
-        case downThenRight
-        case downThenLeft
-        case none
-    }
-    // Bullet
-    enum BulletType {
-        case shipFired
-        case invaderFired
-    }
-
     //Bullet
     let kShipFiredBulletName = "shipFiredBullet"
     let kInvaderFiredBulletName = "invaderFiredBullet"
@@ -93,7 +63,6 @@ class GameScene: SKScene {
     
     let kScoreHudName = "scoreHud"
     let kHealthHudName = "healthHud"
-    
     
     
     
@@ -358,7 +327,6 @@ class GameScene: SKScene {
                 // 3
                 if fabs(data.acceleration.x) > 0.2 {
                     // 4 How do you move the ship?
-                    print("Acceleration: \(data.acceleration.x)")
                     ship.physicsBody!.applyForce(CGVector(dx: 40 * CGFloat(data.acceleration.x), dy: 0))
                 }
             }
