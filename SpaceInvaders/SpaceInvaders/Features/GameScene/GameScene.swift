@@ -27,6 +27,13 @@ class GameScene: SKScene {
     var tapQueue = [ Int ] ()
     
     var contactQueue = [SKPhysicsContact]()
+    
+    
+    //Game Over
+    
+    let kMinInvaderBottomHeight: Float = 32.0
+    var gameEnding: Bool = false
+
 
 
     
@@ -362,6 +369,7 @@ class GameScene: SKScene {
         processUserTaps(forUpdate: currentTime)
         fireInvaderBullets(forUpdate: currentTime)
         processContacts(forUpdate: currentTime)
+    
 
     }
     
@@ -541,6 +549,49 @@ extension GameScene: SKPhysicsContactDelegate{
             if let index = contactQueue.index(of: contact) {
                 contactQueue.remove(at: index)
             }
+        }
+    }
+
+}
+
+// Game Over
+extension GameScene {
+    
+    func isGameOver() -> Bool {
+        // 1
+        let invader = childNode(withName: InvaderType.name)
+        
+        // 2
+        var invaderTooLow = false
+        
+        enumerateChildNodes(withName: InvaderType.name) { node, stop in
+            
+            if (Float(node.frame.minY) <= self.kMinInvaderBottomHeight)   {
+                invaderTooLow = true
+                stop.pointee = true
+            }
+        }
+        
+        // 3
+        let ship = childNode(withName: kShipName)
+        
+        // 4
+        return invader == nil || invaderTooLow || ship == nil
+    }
+    
+    func endGame() {
+        // 1
+        if !gameEnding {
+            
+            gameEnding = true
+            
+            // 2
+            motionManager.stopAccelerometerUpdates()
+            
+            // 3
+            let gameOverScene: GameOverScene = GameOverScene(size: size)
+            
+            view?.presentScene(gameOverScene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1.0))
         }
     }
 
