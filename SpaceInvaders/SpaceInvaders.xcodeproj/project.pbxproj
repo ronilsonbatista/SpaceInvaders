@@ -35,6 +35,7 @@
 		D10049DA214EAE330001FDD7 /* InvaderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049D9214EAE320001FDD7 /* InvaderType.swift */; };
 		D10049DD214EAE690001FDD7 /* InvaderMovementDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049DC214EAE690001FDD7 /* InvaderMovementDirection.swift */; };
 		D10049DF214EAE830001FDD7 /* BulletType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049DE214EAE830001FDD7 /* BulletType.swift */; };
+		D10049EA214EDA650001FDD7 /* AppNamesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049E9214EDA650001FDD7 /* AppNamesControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		D10049D9214EAE320001FDD7 /* InvaderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvaderType.swift; sourceTree = "<group>"; };
 		D10049DC214EAE690001FDD7 /* InvaderMovementDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvaderMovementDirection.swift; sourceTree = "<group>"; };
 		D10049DE214EAE830001FDD7 /* BulletType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletType.swift; sourceTree = "<group>"; };
+		D10049E9214EDA650001FDD7 /* AppNamesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNamesControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				D10049D9214EAE320001FDD7 /* InvaderType.swift */,
 				D10049DC214EAE690001FDD7 /* InvaderMovementDirection.swift */,
 				D10049DE214EAE830001FDD7 /* BulletType.swift */,
+				D10049E9214EDA650001FDD7 /* AppNamesControl.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			files = (
 				D10049DD214EAE690001FDD7 /* InvaderMovementDirection.swift in Sources */,
 				D1003578214D498F005EB9CA /* GameScene.swift in Sources */,
+				D10049EA214EDA650001FDD7 /* AppNamesControl.swift in Sources */,
 				D10049DF214EAE830001FDD7 /* BulletType.swift in Sources */,
 				D100356E214D4440005EB9CA /* GameViewController.swift in Sources */,
 				D100357D214D4D8C005EB9CA /* GameOverScene.swift in Sources */,
