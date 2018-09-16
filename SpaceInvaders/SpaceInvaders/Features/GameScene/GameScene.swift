@@ -370,6 +370,9 @@ class GameScene: SKScene {
         fireInvaderBullets(forUpdate: currentTime)
         processContacts(forUpdate: currentTime)
     
+        if isGameOver() {
+            endGame()
+        }
 
     }
     
