@@ -373,7 +373,6 @@ class GameScene: SKScene {
         if isGameOver() {
             endGame()
         }
-
     }
     
     // Scene Update Helpers
@@ -515,36 +514,6 @@ extension GameScene: SKPhysicsContactDelegate{
     }
 
     
-//    func handle(_ contact: SKPhysicsContact) {
-//        //1
-//        // Ensure you haven't already handled this contact and removed its nodes
-//        if contact.bodyA.node?.parent == nil || contact.bodyB.node?.parent == nil {
-//            return
-//        }
-//
-//        let nodeNames = [contact.bodyA.node!.name!, contact.bodyB.node!.name!]
-//
-//        // 2
-//        if nodeNames.contains(kShipName) && nodeNames.contains(kInvaderFiredBulletName) {
-//
-//            // 3
-//            // Invader bullet hit a ship
-//            run(SKAction.playSoundFileNamed("ShipHit.wav", waitForCompletion: false))
-//
-//            contact.bodyA.node!.removeFromParent()
-//            contact.bodyB.node!.removeFromParent()
-//
-//
-//        } else if nodeNames.contains(InvaderType.name) && nodeNames.contains(kShipFiredBulletName) {
-//
-//            // 4
-//            // Ship bullet hit an invader
-//            run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: false))
-//            contact.bodyA.node!.removeFromParent()
-//            contact.bodyB.node!.removeFromParent()
-//        }
-//    }
-
     func processContacts(forUpdate currentTime: CFTimeInterval) {
         for contact in contactQueue {
             handle(contact)
