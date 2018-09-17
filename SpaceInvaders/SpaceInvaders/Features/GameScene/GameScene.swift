@@ -37,7 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let kInvaderGridSpacing = CGSize(width: 12, height: 12)
     let kInvaderRowCount = 6
     let kInvaderColCount = 6
-    
+//
     let kShipSize = CGSize(width: 30, height: 16)
 
     let kBulletSize = CGSize(width:4, height: 8)
@@ -51,6 +51,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Object Lifecycle Management
     
     // Scene Setup and Content Creation
+    
+    var invaders = Invaders()
     
     override func didMove(to view: SKView) {
         
@@ -73,52 +75,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.backgroundColor = SKColor.black
     }
     
-    func loadInvaderTextures(ofType invaderType: InvaderType) -> [SKTexture] {
-        
-        var prefix: String
-        
-        switch(invaderType) {
-        case .a:
-            prefix = "InvaderA"
-        case .b:
-            prefix = "InvaderB"
-        case .c:
-            prefix = "InvaderC"
-        }
-        
-        // 1
-        return [SKTexture(imageNamed: String(format: "%@_00.png", prefix)),
-                SKTexture(imageNamed: String(format: "%@_01.png", prefix))]
-    }
-    
-    func makeInvader(ofType invaderType: InvaderType) -> SKNode {
-        let invaderTextures = loadInvaderTextures(ofType: invaderType)
-        
-        // 2
-        let invader = SKSpriteNode(texture: invaderTextures[0])
-        invader.name = InvaderType.name
-        
-        // 3
-        invader.run(SKAction.repeatForever(SKAction.animate(with: invaderTextures, timePerFrame: timePerMove)))
-        
-        // invaders' bitmasks setup
-        invader.physicsBody = SKPhysicsBody(rectangleOf: invader.frame.size)
-        invader.physicsBody!.isDynamic = false
-        invader.physicsBody!.categoryBitMask = kInvaderCategory
-        invader.physicsBody!.contactTestBitMask = 0x0
-        invader.physicsBody!.collisionBitMask = 0x0
-        
-        return invader
-    }
-    
     func setupInvaders() {
-        // 1
         let baseOrigin = CGPoint(x: size.width / 3, y: size.height / 2)
         
         for row in 0..<kInvaderRowCount {
-            // 2
+    
             var invaderType: InvaderType
-            
+
             if row % 3 == 0 {
                 invaderType = .a
             } else if row % 3 == 1 {
@@ -126,20 +89,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             } else {
                 invaderType = .c
             }
-            
-            // 3
+
             let invaderPositionY = CGFloat(row) * (InvaderType.size.height * 2) + baseOrigin.y
-            
             var invaderPosition = CGPoint(x: baseOrigin.x, y: invaderPositionY)
-            
-            // 4
+
             for _ in 1..<kInvaderRowCount {
-                // 5
-                let invader = makeInvader(ofType: invaderType)
+                let invader = self.invaders.makeInvader(ofType: invaderType)
                 invader.position = invaderPosition
-                
                 addChild(invader)
-                
+
                 invaderPosition = CGPoint(
                     x: invaderPosition.x + InvaderType.size.width + kInvaderGridSpacing.width,
                     y: invaderPositionY

@@ -36,6 +36,7 @@
 		D10049DD214EAE690001FDD7 /* InvaderMovementDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049DC214EAE690001FDD7 /* InvaderMovementDirection.swift */; };
 		D10049DF214EAE830001FDD7 /* BulletType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049DE214EAE830001FDD7 /* BulletType.swift */; };
 		D10049EA214EDA650001FDD7 /* AppNamesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049E9214EDA650001FDD7 /* AppNamesControl.swift */; };
+		D124A27D214F1CA800C993C2 /* Invaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124A27C214F1CA800C993C2 /* Invaders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		D10049DC214EAE690001FDD7 /* InvaderMovementDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvaderMovementDirection.swift; sourceTree = "<group>"; };
 		D10049DE214EAE830001FDD7 /* BulletType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletType.swift; sourceTree = "<group>"; };
 		D10049E9214EDA650001FDD7 /* AppNamesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNamesControl.swift; sourceTree = "<group>"; };
+		D124A27C214F1CA800C993C2 /* Invaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invaders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		D1003542214D4119005EB9CA /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D124A27B214F1C9D00C993C2 /* Invaders */,
 				D1003579214D4A66005EB9CA /* GameOver */,
 				D1003570214D4444005EB9CA /* GamePlay */,
 				D1003576214D4986005EB9CA /* GameScene */,
@@ -208,12 +211,20 @@
 		D10049D8214EAE1D0001FDD7 /* Types */ = {
 			isa = PBXGroup;
 			children = (
-				D10049D9214EAE320001FDD7 /* InvaderType.swift */,
 				D10049DC214EAE690001FDD7 /* InvaderMovementDirection.swift */,
+				D10049D9214EAE320001FDD7 /* InvaderType.swift */,
 				D10049DE214EAE830001FDD7 /* BulletType.swift */,
 				D10049E9214EDA650001FDD7 /* AppNamesControl.swift */,
 			);
 			path = Types;
+			sourceTree = "<group>";
+		};
+		D124A27B214F1C9D00C993C2 /* Invaders */ = {
+			isa = PBXGroup;
+			children = (
+				D124A27C214F1CA800C993C2 /* Invaders.swift */,
+			);
+			path = Invaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +321,7 @@
 				D10049EA214EDA650001FDD7 /* AppNamesControl.swift in Sources */,
 				D10049DF214EAE830001FDD7 /* BulletType.swift in Sources */,
 				D100356E214D4440005EB9CA /* GameViewController.swift in Sources */,
+				D124A27D214F1CA800C993C2 /* Invaders.swift in Sources */,
 				D100357D214D4D8C005EB9CA /* GameOverScene.swift in Sources */,
 				D1003531214D3FE1005EB9CA /* AppDelegate.swift in Sources */,
 				D10049DA214EAE330001FDD7 /* InvaderType.swift in Sources */,
