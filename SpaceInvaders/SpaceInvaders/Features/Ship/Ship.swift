@@ -13,7 +13,8 @@ class Ship: SKScene {
     
     let kShipCategory: UInt32 = 0x1 << 2
     let kSceneEdgeCategory: UInt32 = 0x1 << 3
-
+    
+    
     func makeShip() -> SKNode {
         let ship = SKSpriteNode(imageNamed: "Ship.png")
         ship.name = AppNamesControl.shared.kShipName

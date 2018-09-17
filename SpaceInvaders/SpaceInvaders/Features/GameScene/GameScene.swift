@@ -129,16 +129,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func adjustScore(by points: Int) {
         score += points
-        
         if let score = childNode(withName: AppNamesControl.shared.kScoreHudName) as? SKLabelNode {
             score.text = String(format: "Score: %04u", self.score)
         }
     }
     
     func adjustShipHealth(by healthAdjustment: Float) {
-        // 1
         shipHealth = max(shipHealth + healthAdjustment, 0)
-        
         if let health = childNode(withName: AppNamesControl.shared.kHealthHudName) as? SKLabelNode {
             health.text = String(format: "Health: %.1f%%", self.shipHealth * 100)
         }
@@ -147,14 +144,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Scene Update
     
     func moveInvaders(forUpdate currentTime: CFTimeInterval) {
-        // 1
-        if (currentTime - timeOfLastMove < timePerMove) {
-            return
-        }
+        if (currentTime - timeOfLastMove < timePerMove) { return }
         
         determineInvaderMovementDirection()
-        
-        // 2
+
         enumerateChildNodes(withName: InvaderType.name) { node, stop in
             switch self.invaderMovementDirection {
             case .right:
@@ -167,7 +160,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break
             }
             
-            // 3
             self.timeOfLastMove = currentTime
         }
     }
@@ -389,35 +381,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    // HUD Helpers
     
     // Physics Contact Helpers
     
-    func didBegin(_ contact: SKPhysicsContact) {
-        contactQueue.append(contact)
-    }
+    func didBegin(_ contact: SKPhysicsContact) { contactQueue.append(contact) }
     
     func handle(_ contact: SKPhysicsContact) {
-        // Ensure you haven't already handled this contact and removed its nodes
-        if contact.bodyA.node?.parent == nil || contact.bodyB.node?.parent == nil {
-            return
-        }
+        if contact.bodyA.node?.parent == nil || contact.bodyB.node?.parent == nil { return }
         
         let nodeNames = [contact.bodyA.node!.name!, contact.bodyB.node!.name!]
-        
         if nodeNames.contains(AppNamesControl.shared.kShipName) && nodeNames.contains(AppNamesControl.shared.kInvaderFiredBulletName) {
-            // Invader bullet hit a ship
             run(SKAction.playSoundFileNamed("ShipHit.wav", waitForCompletion: false))
             
-            // 1
             adjustShipHealth(by: -0.334)
-            
             if shipHealth <= 0.0 {
-                // 2
                 contact.bodyA.node!.removeFromParent()
                 contact.bodyB.node!.removeFromParent()
             } else {
-                // 3
                 if let ship = childNode(withName: AppNamesControl.shared.kShipName) {
                     ship.alpha = CGFloat(shipHealth)
                     
@@ -431,12 +411,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         } else if nodeNames.contains(InvaderType.name) && nodeNames.contains(AppNamesControl.shared.kShipFiredBulletName) {
-            // Ship bullet hit an invader
             run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: false))
             contact.bodyA.node!.removeFromParent()
             contact.bodyB.node!.removeFromParent()
-            
-            // 4
             adjustScore(by: 100)
         }
     }
