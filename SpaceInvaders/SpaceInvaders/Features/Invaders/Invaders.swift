@@ -11,8 +11,6 @@ import CoreMotion
 
 class Invaders: SKScene {
     
-   static public let shared = Invaders()
-    
     let kInvaderCategory: UInt32 = 0x1 << 0
     var timePerMove: CFTimeInterval = 1.0
 

@@ -17,11 +17,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var contentCreated = false
     
-    // 1
     var invaderMovementDirection: InvaderMovementDirection = .right
-    // 2
     var timeOfLastMove: CFTimeInterval = 0.0
-    // 3
     var timePerMove: CFTimeInterval = 1.0
     
     var tapQueue = [Int]()
@@ -37,7 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let kInvaderGridSpacing = CGSize(width: 12, height: 12)
     let kInvaderRowCount = 6
     let kInvaderColCount = 6
-//
+
     let kShipSize = CGSize(width: 30, height: 16)
 
     let kBulletSize = CGSize(width:4, height: 8)
@@ -48,11 +45,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let kSceneEdgeCategory: UInt32 = 0x1 << 3
     let kInvaderFiredBulletCategory: UInt32 = 0x1 << 4
     
-    // Object Lifecycle Management
-    
-    // Scene Setup and Content Creation
     
     var invaders = Invaders()
+    var ship = Ship()
     
     override func didMove(to view: SKView) {
         
@@ -107,41 +102,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupShip() {
-        // 1
-        let ship = makeShip()
-        
-        // 2
+        let ship = self.ship.makeShip()
+
         ship.position = CGPoint(x: size.width / 2.0, y: kShipSize.height / 2.0)
         addChild(ship)
     }
-    
-    func makeShip() -> SKNode {
-        let ship = SKSpriteNode(imageNamed: "Ship.png")
-        ship.name = AppNamesControl.shared.kShipName
 
-        
-        // 1
-        ship.physicsBody = SKPhysicsBody(rectangleOf: ship.frame.size)
-        
-        // 2
-        ship.physicsBody!.isDynamic = true
-        
-        // 3
-        ship.physicsBody!.affectedByGravity = false
-        
-        // 4
-        ship.physicsBody!.mass = 0.02
-        
-        // 1
-        ship.physicsBody!.categoryBitMask = kShipCategory
-        // 2
-        ship.physicsBody!.contactTestBitMask = 0x0
-        // 3
-        ship.physicsBody!.collisionBitMask = kSceneEdgeCategory
-        
-        return ship
-    }
-    
     func setupHud() {
         // 1
         let scoreLabel = SKLabelNode(fontNamed: "Courier")
@@ -519,46 +485,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             adjustScore(by: 100)
         }
     }
-    
-    // Game End Helpers
-    
+}
+
+extension GameScene {
     func isGameOver() -> Bool {
-        // 1
         let invader = childNode(withName: InvaderType.name)
-        
-        // 2
         var invaderTooLow = false
         
         enumerateChildNodes(withName: InvaderType.name) { node, stop in
-            
             if (Float(node.frame.minY) <= self.kMinInvaderBottomHeight)   {
                 invaderTooLow = true
                 stop.pointee = true
             }
         }
         
-        // 3
         let ship = childNode(withName: AppNamesControl.shared.kShipName)
-        
-        // 4
         return invader == nil || invaderTooLow || ship == nil
     }
     
     func endGame() {
-        // 1
         if !gameEnding {
-            
             gameEnding = true
-            
-            // 2
             motionManager.stopAccelerometerUpdates()
-            
-            // 3
             let gameOverScene: GameOverScene = GameOverScene(size: size)
-            
             view?.presentScene(gameOverScene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1.0))
         }
     }
-    
 }
-
