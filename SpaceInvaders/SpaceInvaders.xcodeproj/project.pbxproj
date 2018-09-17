@@ -38,6 +38,7 @@
 		D10049EA214EDA650001FDD7 /* AppNamesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049E9214EDA650001FDD7 /* AppNamesControl.swift */; };
 		D124A27D214F1CA800C993C2 /* Invaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124A27C214F1CA800C993C2 /* Invaders.swift */; };
 		D124A282214F2E4600C993C2 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124A281214F2E4600C993C2 /* Ship.swift */; };
+		D1EDDA9E215064CF009167AE /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDDA9D215064CF009167AE /* Bullet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		D10049E9214EDA650001FDD7 /* AppNamesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNamesControl.swift; sourceTree = "<group>"; };
 		D124A27C214F1CA800C993C2 /* Invaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invaders.swift; sourceTree = "<group>"; };
 		D124A281214F2E4600C993C2 /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		D1EDDA9D215064CF009167AE /* Bullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		D1003542214D4119005EB9CA /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D1EDDA9C215064AB009167AE /* Bullet */,
 				D124A280214F2E3600C993C2 /* Ship */,
 				D124A27B214F1C9D00C993C2 /* Invaders */,
 				D1003579214D4A66005EB9CA /* GameOver */,
@@ -238,6 +241,14 @@
 			path = Ship;
 			sourceTree = "<group>";
 		};
+		D1EDDA9C215064AB009167AE /* Bullet */ = {
+			isa = PBXGroup;
+			children = (
+				D1EDDA9D215064CF009167AE /* Bullet.swift */,
+			);
+			path = Bullet;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -337,6 +348,7 @@
 				D1003531214D3FE1005EB9CA /* AppDelegate.swift in Sources */,
 				D10049DA214EAE330001FDD7 /* InvaderType.swift in Sources */,
 				D124A282214F2E4600C993C2 /* Ship.swift in Sources */,
+				D1EDDA9E215064CF009167AE /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

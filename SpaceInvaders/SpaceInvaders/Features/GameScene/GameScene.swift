@@ -37,17 +37,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let kShipSize = CGSize(width: 30, height: 16)
 
-    let kBulletSize = CGSize(width:4, height: 8)
-    
-    let kInvaderCategory: UInt32 = 0x1 << 0
-    let kShipFiredBulletCategory: UInt32 = 0x1 << 1
-    let kShipCategory: UInt32 = 0x1 << 2
     let kSceneEdgeCategory: UInt32 = 0x1 << 3
-    let kInvaderFiredBulletCategory: UInt32 = 0x1 << 4
     
     
     var invaders = Invaders()
     var ship = Ship()
+    var bulletView = Bullet()
     
     override func didMove(to view: SKView) {
         
@@ -109,32 +104,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func setupHud() {
-        // 1
         let scoreLabel = SKLabelNode(fontNamed: "Courier")
         scoreLabel.name = AppNamesControl.shared.kScoreHudName
         scoreLabel.fontSize = 25
-        
-        // 2
         scoreLabel.fontColor = SKColor.green
         scoreLabel.text = String(format: "Score: %04u", 0)
-        
-        // 3
         scoreLabel.position = CGPoint(
             x: frame.size.width / 2,
             y: size.height - (40 + scoreLabel.frame.size.height/2)
         )
         addChild(scoreLabel)
         
-        // 4
         let healthLabel = SKLabelNode(fontNamed: "Courier")
         healthLabel.name = AppNamesControl.shared.kHealthHudName
         healthLabel.fontSize = 25
-        
-        // 5
         healthLabel.fontColor = SKColor.red
         healthLabel.text = String(format: "Health: %.1f%%", shipHealth * 100.0)
-        
-        // 6
         healthLabel.position = CGPoint(
             x: frame.size.width / 2,
             y: size.height - (80 + healthLabel.frame.size.height/2)
@@ -157,36 +142,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let health = childNode(withName: AppNamesControl.shared.kHealthHudName) as? SKLabelNode {
             health.text = String(format: "Health: %.1f%%", self.shipHealth * 100)
         }
-    }
-    
-    func makeBullet(ofType bulletType: BulletType) -> SKNode {
-        var bullet: SKNode
-        
-        switch bulletType {
-        case .shipFired:
-            bullet = SKSpriteNode(color: SKColor.green, size: kBulletSize)
-            bullet.name = AppNamesControl.shared.kShipFiredBulletName
-            
-            bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.frame.size)
-            bullet.physicsBody!.isDynamic = true
-            bullet.physicsBody!.affectedByGravity = false
-            bullet.physicsBody!.categoryBitMask = kShipFiredBulletCategory
-            bullet.physicsBody!.contactTestBitMask = kInvaderCategory
-            bullet.physicsBody!.collisionBitMask = 0x0
-        case .invaderFired:
-            bullet = SKSpriteNode(color: SKColor.magenta, size: kBulletSize)
-            bullet.name = AppNamesControl.shared.kInvaderFiredBulletName
-            
-            bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.frame.size)
-            bullet.physicsBody!.isDynamic = true
-            bullet.physicsBody!.affectedByGravity = false
-            bullet.physicsBody!.categoryBitMask = kInvaderFiredBulletCategory
-            bullet.physicsBody!.contactTestBitMask = kShipCategory
-            bullet.physicsBody!.collisionBitMask = 0x0
-            break
-        }
-        
-        return bullet
     }
     
     // Scene Update
@@ -267,7 +222,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let invader = allInvaders[allInvadersIndex]
                 
                 // 4
-                let bullet = makeBullet(ofType: .invaderFired)
+                let bullet = self.bulletView.makeBullet(ofType: .invaderFired)
                 bullet.position = CGPoint(
                     x: invader.position.x,
                     y: invader.position.y - invader.frame.size.height / 2 + bullet.frame.size.height / 2
@@ -402,7 +357,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // 1
         if existingBullet == nil {
             if let ship = childNode(withName: AppNamesControl.shared.kShipName) {
-                let bullet = makeBullet(ofType: .shipFired)
+                let bullet = self.bulletView.makeBullet(ofType: .shipFired)
                 // 2
                 bullet.position = CGPoint(
                     x: ship.position.x,
