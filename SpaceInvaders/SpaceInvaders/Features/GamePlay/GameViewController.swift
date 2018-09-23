@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
         
         skView.ignoresSiblingOrder = true
         
-        let scene = GameScene(size: skView.frame.size)
+        let scene = GamePlay(size: skView.frame.size)
         skView.presentScene(scene)
         
         NotificationCenter.default.addObserver(self, selector: #selector(GameViewController.handleApplicationWillResignActive(_:)), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)

@@ -11,22 +11,21 @@ import CoreMotion
 
 class Ship: SKScene {
     
-    let kShipCategory: UInt32 = 0x1 << 2
-    let kSceneEdgeCategory: UInt32 = 0x1 << 3
-    
+    let shipCategory: UInt32 = 0x1 << 2
+    let sceneEdgeCategory: UInt32 = 0x1 << 3
     
     func makeShip() -> SKNode {
         let ship = SKSpriteNode(imageNamed: "Ship.png")
-        ship.name = AppNamesControl.shared.kShipName
+        ship.name = AppNamesControl.shared.shipName
         
         ship.physicsBody = SKPhysicsBody(rectangleOf: ship.frame.size)
         ship.physicsBody!.isDynamic = true
         ship.physicsBody!.affectedByGravity = false
         ship.physicsBody!.mass = 0.02
         
-        ship.physicsBody!.categoryBitMask = kShipCategory
+        ship.physicsBody!.categoryBitMask = shipCategory
         ship.physicsBody!.contactTestBitMask = 0x0
-        ship.physicsBody!.collisionBitMask = kSceneEdgeCategory
+        ship.physicsBody!.collisionBitMask = sceneEdgeCategory
         
         return ship
     }

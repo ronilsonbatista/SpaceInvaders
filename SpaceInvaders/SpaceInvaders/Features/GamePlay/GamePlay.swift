@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  GamePlay.swift
 //  SpaceInvaders
 //
 //  Created by Ronilson Batista on 15/09/2018.
@@ -9,7 +9,7 @@
 import SpriteKit
 import CoreMotion
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GamePlay: SKScene, SKPhysicsContactDelegate {
     
     let motionManager = CMMotionManager()
     var contentCreated = false
@@ -27,9 +27,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let kMinInvaderBottomHeight: Float = 32.0
     var gameEnding: Bool = false
     
-    let kInvaderGridSpacing = CGSize(width: 12, height: 12)
-    let kInvaderRowCount = 6
-    let kInvaderColCount = 6
+    let invaderGridSpacing = CGSize(width: 12, height: 12)
+    let invaderRowCount = 6
+    let invaderColCount = 6
 
     let kShipSize = CGSize(width: 30, height: 16)
     let kSceneEdgeCategory: UInt32 = 0x1 << 3
@@ -62,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupInvaders() {
         let baseOrigin = CGPoint(x: size.width / 3, y: size.height / 2)
         
-        for row in 0..<kInvaderRowCount {
+        for row in 0..<invaderRowCount {
     
             var invaderType: InvaderType
 
@@ -77,13 +77,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let invaderPositionY = CGFloat(row) * (InvaderType.size.height * 2) + baseOrigin.y
             var invaderPosition = CGPoint(x: baseOrigin.x, y: invaderPositionY)
 
-            for _ in 1..<kInvaderRowCount {
+            for _ in 1..<invaderRowCount {
                 let invader = self.invaders.makeInvader(ofType: invaderType)
                 invader.position = invaderPosition
                 addChild(invader)
 
                 invaderPosition = CGPoint(
-                    x: invaderPosition.x + InvaderType.size.width + kInvaderGridSpacing.width,
+                    x: invaderPosition.x + InvaderType.size.width + invaderGridSpacing.width,
                     y: invaderPositionY
                 )
             }
@@ -133,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func processUserMotion(forUpdate currentTime: CFTimeInterval) {
-        if let ship = childNode(withName: AppNamesControl.shared.kShipName) as? SKSpriteNode {
+        if let ship = childNode(withName: AppNamesControl.shared.shipName) as? SKSpriteNode {
             if let data = motionManager.accelerometerData {
                 if fabs(data.acceleration.x) > 0.2 {
                     ship.physicsBody!.applyForce(CGVector(dx: 40 * CGFloat(data.acceleration.x), dy: 0))
@@ -143,7 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func fireInvaderBullets(forUpdate currentTime: CFTimeInterval) {
-        let existingBullet = childNode(withName: AppNamesControl.shared.kInvaderFiredBulletName)
+        let existingBullet = childNode(withName: AppNamesControl.shared.invaderFiredBulletName)
 
         if existingBullet == nil {
             var allInvaders = [SKNode]()
@@ -241,10 +241,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 }
 
 // Score
-extension GameScene {
+extension GamePlay {
     func setupScore() {
         let scoreLabel = SKLabelNode(fontNamed: "Courier")
-        scoreLabel.name = AppNamesControl.shared.kScoreHudName
+        scoreLabel.name = AppNamesControl.shared.scoreHudName
         scoreLabel.fontSize = 25
         scoreLabel.fontColor = SKColor.green
         scoreLabel.text = String(format: "Score: %04u", 0)
@@ -255,7 +255,7 @@ extension GameScene {
         addChild(scoreLabel)
         
         let healthLabel = SKLabelNode(fontNamed: "Courier")
-        healthLabel.name = AppNamesControl.shared.kHealthHudName
+        healthLabel.name = AppNamesControl.shared.healthHudName
         healthLabel.fontSize = 25
         healthLabel.fontColor = SKColor.red
         healthLabel.text = String(format: "Health: %.1f%%", shipHealth * 100.0)
@@ -268,21 +268,21 @@ extension GameScene {
     
     func adjustScore(by points: Int) {
         score += points
-        if let score = childNode(withName: AppNamesControl.shared.kScoreHudName) as? SKLabelNode {
+        if let score = childNode(withName: AppNamesControl.shared.scoreHudName) as? SKLabelNode {
             score.text = String(format: "Score: %04u", self.score)
         }
     }
     
     func adjustShipHealth(by healthAdjustment: Float) {
         shipHealth = max(shipHealth + healthAdjustment, 0)
-        if let health = childNode(withName: AppNamesControl.shared.kHealthHudName) as? SKLabelNode {
+        if let health = childNode(withName: AppNamesControl.shared.healthHudName) as? SKLabelNode {
             health.text = String(format: "Health: %.1f%%", self.shipHealth * 100)
         }
     }
 }
 
 //Bullet
-extension GameScene {
+extension GamePlay {
     func fireBullet(bullet: SKNode, toDestination destination: CGPoint, withDuration duration: CFTimeInterval, andSoundFileName soundName: String) {
         let bulletAction = SKAction.sequence([
             SKAction.move(to: destination, duration: duration),
@@ -296,10 +296,10 @@ extension GameScene {
     }
     
     func fireShipBullets() {
-        let existingBullet = childNode(withName: AppNamesControl.shared.kShipFiredBulletName)
+        let existingBullet = childNode(withName: AppNamesControl.shared.shipFiredBulletName)
         
         if existingBullet == nil {
-            if let ship = childNode(withName: AppNamesControl.shared.kShipName) {
+            if let ship = childNode(withName: AppNamesControl.shared.shipName) {
                 let bullet = self.bulletView.makeBullet(ofType: .shipFired)
                 bullet.position = CGPoint(
                     x: ship.position.x,
@@ -321,12 +321,12 @@ extension GameScene {
 }
 
 //touch in device
-extension GameScene {
+extension GamePlay {
     func handle(_ contact: SKPhysicsContact) {
         if contact.bodyA.node?.parent == nil || contact.bodyB.node?.parent == nil { return }
         
         let nodeNames = [contact.bodyA.node!.name!, contact.bodyB.node!.name!]
-        if nodeNames.contains(AppNamesControl.shared.kShipName) && nodeNames.contains(AppNamesControl.shared.kInvaderFiredBulletName) {
+        if nodeNames.contains(AppNamesControl.shared.shipName) && nodeNames.contains(AppNamesControl.shared.invaderFiredBulletName) {
             run(SKAction.playSoundFileNamed("ShipHit.wav", waitForCompletion: false))
             
             adjustShipHealth(by: -0.334)
@@ -334,7 +334,7 @@ extension GameScene {
                 contact.bodyA.node!.removeFromParent()
                 contact.bodyB.node!.removeFromParent()
             } else {
-                if let ship = childNode(withName: AppNamesControl.shared.kShipName) {
+                if let ship = childNode(withName: AppNamesControl.shared.shipName) {
                     ship.alpha = CGFloat(shipHealth)
                     
                     if contact.bodyA.node == ship {
@@ -346,7 +346,7 @@ extension GameScene {
                 }
             }
             
-        } else if nodeNames.contains(InvaderType.name) && nodeNames.contains(AppNamesControl.shared.kShipFiredBulletName) {
+        } else if nodeNames.contains(InvaderType.name) && nodeNames.contains(AppNamesControl.shared.shipFiredBulletName) {
             run(SKAction.playSoundFileNamed("InvaderHit.wav", waitForCompletion: false))
             contact.bodyA.node!.removeFromParent()
             contact.bodyB.node!.removeFromParent()
@@ -368,7 +368,7 @@ extension GameScene {
 }
 
 // Game Over
-extension GameScene {
+extension GamePlay {
     func isGameOver() -> Bool {
         let invader = childNode(withName: InvaderType.name)
         var invaderTooLow = false
@@ -380,7 +380,7 @@ extension GameScene {
             }
         }
         
-        let ship = childNode(withName: AppNamesControl.shared.kShipName)
+        let ship = childNode(withName: AppNamesControl.shared.shipName)
         return invader == nil || invaderTooLow || ship == nil
     }
     
@@ -388,7 +388,7 @@ extension GameScene {
         if !gameEnding {
             gameEnding = true
             motionManager.stopAccelerometerUpdates()
-            let gameOverScene: GameOverScene = GameOverScene(size: size)
+            let gameOverScene: GameOver = GameOver(size: size)
             view?.presentScene(gameOverScene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1.0))
         }
     }

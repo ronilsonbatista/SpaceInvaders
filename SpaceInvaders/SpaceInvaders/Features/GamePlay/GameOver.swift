@@ -1,5 +1,5 @@
 //
-//  GameOverScene.swift
+//  GameOver.swift
 //  SpaceInvaders
 //
 //  Created by Ronilson Batista on 15/09/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameOverScene: SKScene {
+class GameOver: SKScene {
     
     var contentCreated = false
     
@@ -40,7 +40,7 @@ class GameOverScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)  {
-        let gameScene = GameScene(size: self.size)
+        let gameScene = GamePlay(size: self.size)
         gameScene.scaleMode = .aspectFill
         
         self.view?.presentScene(gameScene, transition: SKTransition.doorsCloseHorizontal(withDuration: 1.0))

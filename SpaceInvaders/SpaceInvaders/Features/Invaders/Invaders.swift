@@ -11,7 +11,7 @@ import CoreMotion
 
 class Invaders: SKScene {
     
-    let kInvaderCategory: UInt32 = 0x1 << 0
+    let invaderCategory: UInt32 = 0x1 << 0
     var timePerMove: CFTimeInterval = 1.0
 
     func makeInvader(ofType invaderType: InvaderType) -> SKNode {
@@ -24,7 +24,7 @@ class Invaders: SKScene {
         
         invader.physicsBody = SKPhysicsBody(rectangleOf: invader.frame.size)
         invader.physicsBody!.isDynamic = false
-        invader.physicsBody!.categoryBitMask = kInvaderCategory
+        invader.physicsBody!.categoryBitMask = invaderCategory
         invader.physicsBody!.contactTestBitMask = 0x0
         invader.physicsBody!.collisionBitMask = 0x0
         

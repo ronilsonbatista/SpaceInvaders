@@ -12,9 +12,10 @@ class AppNamesControl {
     
     static public let shared = AppNamesControl()
     
-    let kShipName = "ship"
-    let kScoreHudName = "scoreHud"
-    let kHealthHudName = "healthHud"
-    let kShipFiredBulletName = "shipFiredBullet"
-    let kInvaderFiredBulletName = "invaderFiredBullet"
+    let shipName = "ship"
+    let scoreHudName = "scoreHud"
+    let healthHudName = "healthHud"
+    let shipFiredBulletName = "shipFiredBullet"
+    let invaderFiredBulletName = "invaderFiredBullet"
+    
 }
