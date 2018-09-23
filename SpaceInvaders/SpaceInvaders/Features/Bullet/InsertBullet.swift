@@ -1,5 +1,5 @@
 //
-//  Bullet.swift
+//  InsertBullet.swift
 //  SpaceInvaders
 //
 //  Created by Ronilson Batista on 17/09/2018.
@@ -9,7 +9,7 @@
 import SpriteKit
 import CoreMotion
 
-class Bullet: SKScene {
+class InsertBullet: SKScene {
     
     let bulletSize = CGSize(width:4, height: 8)
     let shipFiredBulletCategory: UInt32 = 0x1 << 1

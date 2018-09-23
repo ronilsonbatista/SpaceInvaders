@@ -1,5 +1,5 @@
 //
-//  Invaders.swift
+//  InsertInvaders.swift
 //  SpaceInvaders
 //
 //  Created by Ronilson Batista on 16/09/2018.
@@ -9,7 +9,7 @@
 import SpriteKit
 import CoreMotion
 
-class Invaders: SKScene {
+class InsertInvaders: SKScene {
     
     let invaderCategory: UInt32 = 0x1 << 0
     var timePerMove: CFTimeInterval = 1.0
@@ -35,11 +35,11 @@ class Invaders: SKScene {
         var prefix: String
         
         switch(invaderType) {
-        case .a:
+        case .invaderA:
             prefix = "InvaderA"
-        case .b:
+        case .invaderB:
             prefix = "InvaderB"
-        case .c:
+        case .invaderC:
             prefix = "InvaderC"
         }
         

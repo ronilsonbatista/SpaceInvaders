@@ -9,6 +9,7 @@
 import Foundation
 
 enum InvaderMovementDirection {
+    
     case right
     case left
     case downThenRight

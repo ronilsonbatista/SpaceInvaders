@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 enum InvaderType {
-    case a
-    case b
-    case c
+    case invaderA
+    case invaderB
+    case invaderC
     
     static var size: CGSize {
         return CGSize(width: 24, height: 16)

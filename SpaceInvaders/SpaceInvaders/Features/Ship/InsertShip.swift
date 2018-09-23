@@ -1,5 +1,5 @@
 //
-//  Ship.swift
+//  InsertShip.swift
 //  SpaceInvaders
 //
 //  Created by Ronilson Batista on 16/09/2018.
@@ -9,7 +9,7 @@
 import SpriteKit
 import CoreMotion
 
-class Ship: SKScene {
+class InsertShip: SKScene {
     
     let shipCategory: UInt32 = 0x1 << 2
     let sceneEdgeCategory: UInt32 = 0x1 << 3

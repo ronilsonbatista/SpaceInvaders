@@ -34,9 +34,9 @@ class GamePlay: SKScene, SKPhysicsContactDelegate {
     let kShipSize = CGSize(width: 30, height: 16)
     let kSceneEdgeCategory: UInt32 = 0x1 << 3
     
-    var invaders = Invaders()
-    var ship = Ship()
-    var bulletView = Bullet()
+    var invaders = InsertInvaders()
+    var ship = InsertShip()
+    var bulletView = InsertBullet()
     
     override func didMove(to view: SKView) {
         
@@ -67,11 +67,11 @@ class GamePlay: SKScene, SKPhysicsContactDelegate {
             var invaderType: InvaderType
 
             if row % 3 == 0 {
-                invaderType = .a
+                invaderType = .invaderA
             } else if row % 3 == 1 {
-                invaderType = .b
+                invaderType = .invaderB
             } else {
-                invaderType = .c
+                invaderType = .invaderC
             }
 
             let invaderPositionY = CGFloat(row) * (InvaderType.size.height * 2) + baseOrigin.y
