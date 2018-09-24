@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4651B7F1B80055E802BB6BCB /* Pods_SpaceInvaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAD3EB4F0F024B41BF717AE /* Pods_SpaceInvaders.framework */; };
 		D1003531214D3FE1005EB9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1003530214D3FE1005EB9CA /* AppDelegate.swift */; };
 		D1003536214D3FE1005EB9CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1003534214D3FE1005EB9CA /* Main.storyboard */; };
 		D1003538214D3FE2005EB9CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1003537214D3FE2005EB9CA /* Assets.xcassets */; };
@@ -42,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CCA1E73DC6949FB5B859B22 /* Pods-SpaceInvaders.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceInvaders.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceInvaders/Pods-SpaceInvaders.release.xcconfig"; sourceTree = "<group>"; };
+		8CAD3EB4F0F024B41BF717AE /* Pods_SpaceInvaders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceInvaders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B372510FD30F01FFBF7E715D /* Pods-SpaceInvaders.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceInvaders.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceInvaders/Pods-SpaceInvaders.debug.xcconfig"; sourceTree = "<group>"; };
 		D100352D214D3FE1005EB9CA /* SpaceInvaders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceInvaders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1003530214D3FE1005EB9CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1003535214D3FE1005EB9CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,17 +87,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4651B7F1B80055E802BB6BCB /* Pods_SpaceInvaders.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B506CB6B51D4AD370E37A4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CAD3EB4F0F024B41BF717AE /* Pods_SpaceInvaders.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		58FD0B61B595D1C64F9E782C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B372510FD30F01FFBF7E715D /* Pods-SpaceInvaders.debug.xcconfig */,
+				3CCA1E73DC6949FB5B859B22 /* Pods-SpaceInvaders.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D1003524214D3FE1005EB9CA = {
 			isa = PBXGroup;
 			children = (
 				D100352F214D3FE1005EB9CA /* SpaceInvaders */,
 				D100352E214D3FE1005EB9CA /* Products */,
+				58FD0B61B595D1C64F9E782C /* Pods */,
+				0B506CB6B51D4AD370E37A4C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,9 +256,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D100353F214D3FE2005EB9CA /* Build configuration list for PBXNativeTarget "SpaceInvaders" */;
 			buildPhases = (
+				F17D25A8B78ABD0FD539A1A5 /* [CP] Check Pods Manifest.lock */,
 				D1003529214D3FE1005EB9CA /* Sources */,
 				D100352A214D3FE1005EB9CA /* Frameworks */,
 				D100352B214D3FE1005EB9CA /* Resources */,
+				CD23DB8A60900C1FDD3B2102 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -308,6 +334,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD23DB8A60900C1FDD3B2102 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpaceInvaders/Pods-SpaceInvaders-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpaceInvaders/Pods-SpaceInvaders-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F17D25A8B78ABD0FD539A1A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpaceInvaders-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D1003529214D3FE1005EB9CA /* Sources */ = {
@@ -466,6 +533,7 @@
 		};
 		D1003540214D3FE2005EB9CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B372510FD30F01FFBF7E715D /* Pods-SpaceInvaders.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -485,6 +553,7 @@
 		};
 		D1003541214D3FE2005EB9CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CCA1E73DC6949FB5B859B22 /* Pods-SpaceInvaders.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
