@@ -8,6 +8,7 @@
 
 import SpriteKit
 import CoreMotion
+import RealmSwift
 
 class GamePlay: SKScene, SKPhysicsContactDelegate {
     
@@ -391,12 +392,22 @@ extension GamePlay {
 //            print("socre \(self.score)")
             gameEnding = true
             motionManager.stopAccelerometerUpdates()
+            
+            let realm = try! Realm()
+            
+            try! realm.write {
+                let database = ScoresModel()
+                
+                database.score = self.score
+                realm.add(database)
+            }
+            
             let gameOverScene: GameOver = GameOver(size: size)
             view?.presentScene(gameOverScene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1.0))
         }
     }
     
-    func addScore() {
-        self.dataManager.saveScores(score: self.score)
-    }
+//    func addScore() {
+//        self.dataManager.saveScores(score: self.score)
+//    }
 }
