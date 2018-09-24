@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		313DE7B4215934ED00AD2CC9 /* ScoresDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313DE7B3215934ED00AD2CC9 /* ScoresDataManager.swift */; };
+		313DE7B62159372F00AD2CC9 /* ScoresModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313DE7B52159372F00AD2CC9 /* ScoresModel.swift */; };
 		4651B7F1B80055E802BB6BCB /* Pods_SpaceInvaders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAD3EB4F0F024B41BF717AE /* Pods_SpaceInvaders.framework */; };
 		D1003531214D3FE1005EB9CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1003530214D3FE1005EB9CA /* AppDelegate.swift */; };
 		D1003536214D3FE1005EB9CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1003534214D3FE1005EB9CA /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		313DE7B3215934ED00AD2CC9 /* ScoresDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresDataManager.swift; sourceTree = "<group>"; };
+		313DE7B52159372F00AD2CC9 /* ScoresModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresModel.swift; sourceTree = "<group>"; };
 		3CCA1E73DC6949FB5B859B22 /* Pods-SpaceInvaders.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceInvaders.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceInvaders/Pods-SpaceInvaders.release.xcconfig"; sourceTree = "<group>"; };
 		8CAD3EB4F0F024B41BF717AE /* Pods_SpaceInvaders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpaceInvaders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B372510FD30F01FFBF7E715D /* Pods-SpaceInvaders.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceInvaders.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpaceInvaders/Pods-SpaceInvaders.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +106,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		313DE7B12159334300AD2CC9 /* ORM */ = {
+			isa = PBXGroup;
+			children = (
+				313DE7B22159349F00AD2CC9 /* Scores */,
+			);
+			path = ORM;
+			sourceTree = "<group>";
+		};
+		313DE7B22159349F00AD2CC9 /* Scores */ = {
+			isa = PBXGroup;
+			children = (
+				313DE7B52159372F00AD2CC9 /* ScoresModel.swift */,
+				313DE7B3215934ED00AD2CC9 /* ScoresDataManager.swift */,
+			);
+			path = Scores;
+			sourceTree = "<group>";
+		};
 		58FD0B61B595D1C64F9E782C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,8 +164,9 @@
 		D1003542214D4119005EB9CA /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				D1943D782157D8C400BD3010 /* GamePlay */,
+				313DE7B12159334300AD2CC9 /* ORM */,
 				D1EDDA9C215064AB009167AE /* Bullet */,
+				D1943D782157D8C400BD3010 /* GamePlay */,
 				D124A27B214F1C9D00C993C2 /* Invaders */,
 				D124A280214F2E3600C993C2 /* Ship */,
 			);
@@ -388,9 +410,11 @@
 				D100356E214D4440005EB9CA /* GameViewController.swift in Sources */,
 				D124A27D214F1CA800C993C2 /* InsertInvaders.swift in Sources */,
 				D100357D214D4D8C005EB9CA /* GameOver.swift in Sources */,
+				313DE7B62159372F00AD2CC9 /* ScoresModel.swift in Sources */,
 				D1003531214D3FE1005EB9CA /* AppDelegate.swift in Sources */,
 				D10049DA214EAE330001FDD7 /* InvaderType.swift in Sources */,
 				D124A282214F2E4600C993C2 /* InsertShip.swift in Sources */,
+				313DE7B4215934ED00AD2CC9 /* ScoresDataManager.swift in Sources */,
 				D1EDDA9E215064CF009167AE /* InsertBullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
