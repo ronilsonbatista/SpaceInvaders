@@ -11,15 +11,14 @@ import RealmSwift
 
 final class ScoresDataManager {
     
-    func saveScores(score: String) {
+    func saveScores(score: Int) {
     
         let realm = try! Realm()
         
         try! realm.write {
             let database = ScoresModel()
             
-            database.score = score
-        
+            database.score.append(score)
             realm.add(database)
         }
     }

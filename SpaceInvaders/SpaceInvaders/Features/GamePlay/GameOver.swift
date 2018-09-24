@@ -27,6 +27,8 @@ class GameOver: SKScene {
         gameOverLabel.text = "Game Over!"
         gameOverLabel.position = CGPoint(x: self.size.width/2, y: 2.0 / 3.0 * self.size.height);
         
+        print("Score\(AppNamesControl.shared.scoreHudName)")
+        
         self.addChild(gameOverLabel)
         
         let tapLabel = SKLabelNode(fontNamed: "Courier")

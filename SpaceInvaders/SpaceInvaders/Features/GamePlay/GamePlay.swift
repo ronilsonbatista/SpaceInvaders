@@ -11,32 +11,34 @@ import CoreMotion
 
 class GamePlay: SKScene, SKPhysicsContactDelegate {
     
-    let motionManager = CMMotionManager()
-    var contentCreated = false
+    fileprivate let motionManager = CMMotionManager()
+    fileprivate var contentCreated = false
     
-    var invaderMovementDirection: InvaderMovementDirection = .right
-    var timeOfLastMove: CFTimeInterval = 0.0
-    var timePerMove: CFTimeInterval = 1.0
+    fileprivate var invaderMovementDirection: InvaderMovementDirection = .right
+    fileprivate var timeOfLastMove: CFTimeInterval = 0.0
+    fileprivate var timePerMove: CFTimeInterval = 1.0
     
-    var tapQueue = [Int]()
-    var contactQueue = [SKPhysicsContact]()
+    fileprivate var tapQueue = [Int]()
+    fileprivate var contactQueue = [SKPhysicsContact]()
     
-    var score: Int = 0
-    var shipHealth: Float = 1.0
+    fileprivate var score: Int = 0
+    fileprivate var shipHealth: Float = 1.0
     
-    let kMinInvaderBottomHeight: Float = 32.0
-    var gameEnding: Bool = false
+    fileprivate let kMinInvaderBottomHeight: Float = 32.0
+    fileprivate var gameEnding: Bool = false
     
-    let invaderGridSpacing = CGSize(width: 12, height: 12)
-    let invaderRowCount = 6
-    let invaderColCount = 6
+    fileprivate let invaderGridSpacing = CGSize(width: 12, height: 12)
+    fileprivate let invaderRowCount = 6
+    fileprivate let invaderColCount = 6
 
-    let kShipSize = CGSize(width: 30, height: 16)
-    let kSceneEdgeCategory: UInt32 = 0x1 << 3
+    fileprivate let kShipSize = CGSize(width: 30, height: 16)
+    fileprivate let kSceneEdgeCategory: UInt32 = 0x1 << 3
     
-    var invaders = InsertInvaders()
-    var ship = InsertShip()
-    var bulletView = InsertBullet()
+    fileprivate var invaders = InsertInvaders()
+    fileprivate var ship = InsertShip()
+    fileprivate var bulletView = InsertBullet()
+    
+    fileprivate var dataManager = ScoresDataManager()
     
     override func didMove(to view: SKView) {
         
@@ -386,10 +388,15 @@ extension GamePlay {
     
     func endGame() {
         if !gameEnding {
+//            print("socre \(self.score)")
             gameEnding = true
             motionManager.stopAccelerometerUpdates()
             let gameOverScene: GameOver = GameOver(size: size)
             view?.presentScene(gameOverScene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1.0))
         }
+    }
+    
+    func addScore() {
+        self.dataManager.saveScores(score: self.score)
     }
 }
