@@ -12,8 +12,9 @@ import RealmSwift
 
 class GameOver: SKScene {
     
-    fileprivate var dataBase: Realm?
-    fileprivate var score: RealmSwift.Results<ScoresModel>?
+    private var dataBase: Realm?
+    private var score: RealmSwift.Results<ScoresModel>?
+    private var scoreByOrder: [ScoresModel] = []
     
     var contentCreated = false
     
@@ -26,6 +27,24 @@ class GameOver: SKScene {
         }
     }
     
+    private func updateData() {
+        guard let dataBase = self.dataBase else {
+            return
+        }
+        self.score = dataBase.objects(ScoresModel.self)
+        self.sortedByOrder()
+    }
+    
+    private func sortedByOrder() {
+        
+        let order =  self.score?.sorted(by: { $0.score > $1.score })
+        self.scoreByOrder = order!
+        
+        for element in self.scoreByOrder {
+            print("element \(element.score)")
+        }
+    }
+    
     func createContent() {
         
         let gameOverLabel = SKLabelNode(fontNamed: "Courier")
@@ -34,10 +53,8 @@ class GameOver: SKScene {
         gameOverLabel.text = "Game Over!"
         gameOverLabel.position = CGPoint(x: self.size.width/2, y: 2.0 / 3.0 * self.size.height);
         
-        print("Score\(AppNamesControl.shared.scoreHudName)")
-        
         self.addChild(gameOverLabel)
-        
+    
         let tapLabel = SKLabelNode(fontNamed: "Courier")
         tapLabel.fontSize = 25
         tapLabel.fontColor = SKColor.white
@@ -46,14 +63,6 @@ class GameOver: SKScene {
         
         self.addChild(tapLabel)
         self.backgroundColor = SKColor.black
-    }
-    
-    func updateData() {
-        guard let dataBase = self.dataBase else {
-            return
-        }
-        self.score = dataBase.objects(ScoresModel.self)
-        print("score: \(String(describing: self.score?.count))")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)  {

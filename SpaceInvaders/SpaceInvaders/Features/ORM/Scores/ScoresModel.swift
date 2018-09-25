@@ -10,15 +10,6 @@ import UIKit
 import RealmSwift
 
 class ScoresModel: Object {
-    
-    @objc dynamic var score = 0
 
+    @objc dynamic var score = Int()
 }
-
-//class Foo: Object {
-//    let integerList = List<IntObject>() // Workaround
-//}
-//
-//class IntObject: Object {
-//    dynamic var value = 0
-//}
