@@ -17,8 +17,6 @@ extension Date {
         temp.timeZone = TimeZone(identifier: "America/Sao_Paulo")
         temp.dateFormat = "dd/MM/yyyy HH:mm:ss"
         
-//        temp.dateFormat = "dd/MM/yyyy"
-        
         return temp.string(from: date)
     }
 }
