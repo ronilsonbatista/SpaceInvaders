@@ -41,6 +41,7 @@
 		D10049EA214EDA650001FDD7 /* AppNamesControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10049E9214EDA650001FDD7 /* AppNamesControl.swift */; };
 		D124A27D214F1CA800C993C2 /* InsertInvaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124A27C214F1CA800C993C2 /* InsertInvaders.swift */; };
 		D124A282214F2E4600C993C2 /* InsertShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D124A281214F2E4600C993C2 /* InsertShip.swift */; };
+		D1383E51215AA91C007BF14E /* FormatDateWithIntervalBehind.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1383E50215AA91C007BF14E /* FormatDateWithIntervalBehind.swift */; };
 		D1EDDA9E215064CF009167AE /* InsertBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EDDA9D215064CF009167AE /* InsertBullet.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		D10049E9214EDA650001FDD7 /* AppNamesControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNamesControl.swift; sourceTree = "<group>"; };
 		D124A27C214F1CA800C993C2 /* InsertInvaders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertInvaders.swift; sourceTree = "<group>"; };
 		D124A281214F2E4600C993C2 /* InsertShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertShip.swift; sourceTree = "<group>"; };
+		D1383E50215AA91C007BF14E /* FormatDateWithIntervalBehind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDateWithIntervalBehind.swift; sourceTree = "<group>"; };
 		D1EDDA9D215064CF009167AE /* InsertBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertBullet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 		D1003543214D4124005EB9CA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D1383E50215AA91C007BF14E /* FormatDateWithIntervalBehind.swift */,
 				D10049E9214EDA650001FDD7 /* AppNamesControl.swift */,
 				D1003546214D4213005EB9CA /* SoundEffects */,
 				D100354F214D4289005EB9CA /* SpriteImages */,
@@ -404,6 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D10049DD214EAE690001FDD7 /* InvaderMovementDirection.swift in Sources */,
+				D1383E51215AA91C007BF14E /* FormatDateWithIntervalBehind.swift in Sources */,
 				D1003578214D498F005EB9CA /* GamePlay.swift in Sources */,
 				D10049EA214EDA650001FDD7 /* AppNamesControl.swift in Sources */,
 				D10049DF214EAE830001FDD7 /* BulletType.swift in Sources */,

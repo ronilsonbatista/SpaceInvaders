@@ -389,7 +389,6 @@ extension GamePlay {
     
     func endGame() {
         if !gameEnding {
-//            print("socre \(self.score)")
             gameEnding = true
             motionManager.stopAccelerometerUpdates()
             self.addScore()
@@ -399,6 +398,8 @@ extension GamePlay {
     }
     
     func addScore() {
-        self.dataManager.saveScores(score: self.score)
+        var date = String()
+        date = Date().formatDateWithIntervalBehind(0)
+        self.dataManager.saveScores(score: self.score, date: date)
     }
 }

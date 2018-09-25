@@ -11,7 +11,7 @@ import RealmSwift
 
 final class ScoresDataManager {
     
-    func saveScores(score: Int) {
+    func saveScores(score: Int, date: String) {
     
         let realm = try! Realm()
     
@@ -19,6 +19,7 @@ final class ScoresDataManager {
             let database = ScoresModel()
             
             database.score = score
+            database.date = date
             realm.add(database)
         }
     }

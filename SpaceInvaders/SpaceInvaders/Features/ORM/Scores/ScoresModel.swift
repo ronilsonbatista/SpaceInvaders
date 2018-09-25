@@ -12,4 +12,5 @@ import RealmSwift
 class ScoresModel: Object {
 
     @objc dynamic var score = Int()
+    @objc dynamic var date = " "
 }

@@ -39,9 +39,13 @@ class GameOver: SKScene {
         
         let order =  self.score?.sorted(by: { $0.score > $1.score })
         self.scoreByOrder = order!
-        
+        print("|-----------Best Scores--------------|")
+        print("|---------------|--------------------|")
+        print("|---------------|--------------------|")
+        print("|---------------v--------------------|")
+    
         for element in self.scoreByOrder {
-            print("element \(element.score)")
+            print("PONTOS: \(element.score) - \(element.date)")
         }
     }
     
