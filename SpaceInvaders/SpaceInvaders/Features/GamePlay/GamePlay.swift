@@ -178,7 +178,7 @@ class GamePlay: SKScene, SKPhysicsContactDelegate {
         for contact in contactQueue {
             handle(contact)
             
-            if let index = contactQueue.index(of: contact) {
+            if let index = contactQueue.firstIndex(of: contact) {
                 contactQueue.remove(at: index)
             }
         }
